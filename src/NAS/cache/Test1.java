@@ -3,7 +3,7 @@ package NAS.cache;
 import static NAS.cache.LocalCache.get;
 import static NAS.cache.LocalCache.put;
 
-public class Haha {
+public class Test1 {
     static int i=1;
     //开发人员二次修改的
     //开发人员三次修改的
