@@ -32,7 +32,7 @@ public class LogVIew {
                         randomFile.seek(lastTimeFileSize);
                         String tmp = "";
                         ArrayList<String> res=new ArrayList<>();
-                        String conMac="";
+                        ArrayList<String> res1=new ArrayList<>();
 
                         while( (tmp = randomFile.readLine())!= null) {
                             //System.out.println(new String(tmp.getBytes("ISO8859-1")));
@@ -50,8 +50,8 @@ public class LogVIew {
                                 String sl1[] = tmp.split(" ");
                                 //9 to 10
                                 String mac = sl1[sl1.length-1];
-                                conMac=mac;
-                                System.out.println("Connected"+conMac);
+                                res1.add(mac);
+                                System.out.println("Connected"+mac);
                                 // System.out.println(System.currentTimeMillis());
                             }
                         }
@@ -60,9 +60,11 @@ public class LogVIew {
                             DoLogin d=new DoLogin();
                             d.deleteAndSend(res);
                         }
-                        if(conMac!=""){
+                        if(res1.size()!=0){
                             //conDevice 是接入的mac地址
-                            new Thread(new UDPSend("127.0.0.1",12310,conMac.getBytes())).start();
+                            for(int i=0;i<res1.size();i++){
+                                new Thread(new UDPSend("127.0.0.1",12310,res1.get(i).getBytes())).start();
+                            }
                         }
 
                         lastTimeFileSize = randomFile.length();
