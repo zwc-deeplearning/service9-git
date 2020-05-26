@@ -87,7 +87,7 @@ public class Ip_mvReceive {
                     try {
                         Thread.sleep( 500); //设置暂停的时间
                         System.out.println("--循环执行第" + (i+1) + "次--");
-                        res=containsKey("mac_insert");
+                        res=containsKey(mac_insert);
                         if(res){
                             if (!JudgeExist.judge(ss[3])) {
                                 String username_mv = ss[0];
